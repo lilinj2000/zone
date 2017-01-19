@@ -33,6 +33,14 @@ void TraderServer::onRspOrderInsert(int order_ref)
   ZONE_TRACE <<"TraderServer::onRspOrderInsert()";
 
   ZONE_DEBUG <<"order_ref is " <<order_ref;
+
+  auto it = records_.find(order_ref);
+  if (it != records_.end()) {
+    it->second->updateT1();
+
+    timestamp_file_->putData( it->second );
+    records_.erase( it );
+  }
 }
 
 void TraderServer::onRtnOrder(int order_ref, const std::string& order_status, const std::string& status_msg)
