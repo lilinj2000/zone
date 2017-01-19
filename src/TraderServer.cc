@@ -100,8 +100,6 @@ void TraderServer::run()
           zone_options_->instrument_id,
           zone_options_->price,
           zone_options_->volume);
-
-      
     }
     else
     {

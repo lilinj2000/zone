@@ -2,10 +2,6 @@
 
 home_app=~/app
 
-if test -d /llj/app ; then
-   home_app=/llj/app
-fi
-
 home_zone=${home_app}/zone
 
 ./configure --prefix=${home_zone}

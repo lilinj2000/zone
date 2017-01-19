@@ -31,7 +31,7 @@ noinst_HEADERS = ZoneConfig.hh \
 		TraderServer.hh
 
 
-EXTRA_DIST = env.sh.example zone.cfg.example log.cfg.example
+EXTRA_DIST = env.sh zone.cfg log.cfg
 
 zonedir = $(bindir)
 zone_DATA = $(EXTRA_DIST)
