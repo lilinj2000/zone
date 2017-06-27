@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.63])
 AC_INIT(zone, 0.1, lilinj2000@gmail.com)
 AC_CONFIG_SRCDIR([])
 #AC_CONFIG_HEADERS([config.h])
