@@ -1,3 +1,6 @@
+// Copyright (c) 2010
+// All rights reserved.
+
 #ifndef ZONE_LOG_HH
 #define ZONE_LOG_HH
 
