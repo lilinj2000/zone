@@ -1,19 +1,20 @@
+// Copyright (c) 2010
+// All rights reserved.
+
 #include <memory>
-#include "ZoneConfig.hh"
-#include "TraderServer.hh"
+#include "Config.hh"
+#include "Server.hh"
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
+  std::unique_ptr<zone::Config> config;
+  config.reset(new zone::Config(argc, argv));
 
-  std::unique_ptr<zone::ZoneConfig> config;
-  config.reset(new zone::ZoneConfig(argc, argv));
+  zone::Options* options = config->options();
 
-  zone::ZoneOptions* zone_options = config->zoneOptions();
-
-  std::unique_ptr<zone::TraderServer> server;
-  server.reset(new zone::TraderServer(zone_options, config->zeroTraderOptions()));
+  std::unique_ptr<zone::Server> server;
+  server.reset(new zone::Server(options, config->zeroTraderOptions()));
 
   server->run();
-  
+
   return 0;
 }

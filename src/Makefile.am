@@ -4,8 +4,8 @@ SUBDIRS = traderflow
 
 bin_PROGRAMS = zone
 zone_SOURCES = \
-	ZoneConfig.cc \
-	TraderServer.cc \
+	Config.cc \
+	Server.cc \
 	Main.cc 
 
 
@@ -26,9 +26,9 @@ zone_LDADD = \
 zone_LDFLAGS = $(LIBADD_DL) -Wl,--no-as-needed -pthread
 
 # header files
-noinst_HEADERS = ZoneConfig.hh \
-		ZoneLog.hh \
-		TraderServer.hh
+noinst_HEADERS = Config.hh \
+		Log.hh \
+		Server.hh
 
 
 EXTRA_DIST = env.sh zone.cfg log.cfg

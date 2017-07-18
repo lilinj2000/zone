@@ -1,3 +1,6 @@
+// Copyright (c) 2010
+// All rights reserved.
+
 #ifndef ZONE_CONFIG_HH
 #define ZONE_CONFIG_HH
 
@@ -5,18 +8,14 @@
 #include <memory>
 #include "soil/Config.hh"
 
-namespace zone
-{
+namespace zone {
 
 namespace po = boost::program_options;
 
-class ZoneOptions : public soil::Options
-{
+class Options : public soil::Options {
  public:
-
-  ZoneOptions();
-  
-  virtual ~ZoneOptions();
+  Options();
+  virtual ~Options();
 
   virtual po::options_description* configOptions();
 
@@ -36,31 +35,25 @@ class ZoneOptions : public soil::Options
   boost::program_options::options_description config_options_;
 };
 
-class ZoneConfig
-{
+class Config {
  public:
-  
-  ZoneConfig(int argc=0, char* argv[]=NULL);
-  ~ZoneConfig();
+  explicit Config(int argc = 0, char* argv[] = nullptr);
 
-  ZoneOptions* zoneOptions()
-  {
-    return zone_options_.get();
+  ~Config();
+
+  Options* options() {
+    return options_.get();
   }
 
-  soil::Options* zeroTraderOptions()
-  {
+  soil::Options* zeroTraderOptions() {
     return zero_trader_options_.get();
   }
 
  private:
-  std::unique_ptr<ZoneOptions> zone_options_;
-  
+  std::unique_ptr<Options> options_;
   std::unique_ptr<soil::Options> zero_trader_options_;
-
 };
 
-}  
+}  // namespace zone
 
-
-#endif 
+#endif

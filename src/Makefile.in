@@ -52,8 +52,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(zonedir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_zone_OBJECTS = zone-ZoneConfig.$(OBJEXT) \
-	zone-TraderServer.$(OBJEXT) zone-Main.$(OBJEXT)
+am_zone_OBJECTS = zone-Config.$(OBJEXT) zone-Server.$(OBJEXT) \
+	zone-Main.$(OBJEXT)
 zone_OBJECTS = $(am_zone_OBJECTS)
 am__DEPENDENCIES_1 =
 zone_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -275,8 +275,8 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
 SUBDIRS = traderflow
 zone_SOURCES = \
-	ZoneConfig.cc \
-	TraderServer.cc \
+	Config.cc \
+	Server.cc \
 	Main.cc 
 
 zone_CPPFLAGS = -I$(top_srcdir) \
@@ -294,9 +294,9 @@ zone_LDADD = \
 zone_LDFLAGS = $(LIBADD_DL) -Wl,--no-as-needed -pthread
 
 # header files
-noinst_HEADERS = ZoneConfig.hh \
-		ZoneLog.hh \
-		TraderServer.hh
+noinst_HEADERS = Config.hh \
+		Log.hh \
+		Server.hh
 
 EXTRA_DIST = env.sh zone.cfg log.cfg
 zonedir = $(bindir)
@@ -388,9 +388,9 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/zone-Config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/zone-Main.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/zone-TraderServer.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/zone-ZoneConfig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/zone-Server.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -413,33 +413,33 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
 
-zone-ZoneConfig.o: ZoneConfig.cc
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-ZoneConfig.o -MD -MP -MF $(DEPDIR)/zone-ZoneConfig.Tpo -c -o zone-ZoneConfig.o `test -f 'ZoneConfig.cc' || echo '$(srcdir)/'`ZoneConfig.cc
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-ZoneConfig.Tpo $(DEPDIR)/zone-ZoneConfig.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ZoneConfig.cc' object='zone-ZoneConfig.o' libtool=no @AMDEPBACKSLASH@
+zone-Config.o: Config.cc
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-Config.o -MD -MP -MF $(DEPDIR)/zone-Config.Tpo -c -o zone-Config.o `test -f 'Config.cc' || echo '$(srcdir)/'`Config.cc
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-Config.Tpo $(DEPDIR)/zone-Config.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='Config.cc' object='zone-Config.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-ZoneConfig.o `test -f 'ZoneConfig.cc' || echo '$(srcdir)/'`ZoneConfig.cc
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-Config.o `test -f 'Config.cc' || echo '$(srcdir)/'`Config.cc
 
-zone-ZoneConfig.obj: ZoneConfig.cc
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-ZoneConfig.obj -MD -MP -MF $(DEPDIR)/zone-ZoneConfig.Tpo -c -o zone-ZoneConfig.obj `if test -f 'ZoneConfig.cc'; then $(CYGPATH_W) 'ZoneConfig.cc'; else $(CYGPATH_W) '$(srcdir)/ZoneConfig.cc'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-ZoneConfig.Tpo $(DEPDIR)/zone-ZoneConfig.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ZoneConfig.cc' object='zone-ZoneConfig.obj' libtool=no @AMDEPBACKSLASH@
+zone-Config.obj: Config.cc
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-Config.obj -MD -MP -MF $(DEPDIR)/zone-Config.Tpo -c -o zone-Config.obj `if test -f 'Config.cc'; then $(CYGPATH_W) 'Config.cc'; else $(CYGPATH_W) '$(srcdir)/Config.cc'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-Config.Tpo $(DEPDIR)/zone-Config.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='Config.cc' object='zone-Config.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-ZoneConfig.obj `if test -f 'ZoneConfig.cc'; then $(CYGPATH_W) 'ZoneConfig.cc'; else $(CYGPATH_W) '$(srcdir)/ZoneConfig.cc'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-Config.obj `if test -f 'Config.cc'; then $(CYGPATH_W) 'Config.cc'; else $(CYGPATH_W) '$(srcdir)/Config.cc'; fi`
 
-zone-TraderServer.o: TraderServer.cc
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-TraderServer.o -MD -MP -MF $(DEPDIR)/zone-TraderServer.Tpo -c -o zone-TraderServer.o `test -f 'TraderServer.cc' || echo '$(srcdir)/'`TraderServer.cc
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-TraderServer.Tpo $(DEPDIR)/zone-TraderServer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='TraderServer.cc' object='zone-TraderServer.o' libtool=no @AMDEPBACKSLASH@
+zone-Server.o: Server.cc
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-Server.o -MD -MP -MF $(DEPDIR)/zone-Server.Tpo -c -o zone-Server.o `test -f 'Server.cc' || echo '$(srcdir)/'`Server.cc
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-Server.Tpo $(DEPDIR)/zone-Server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='Server.cc' object='zone-Server.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-TraderServer.o `test -f 'TraderServer.cc' || echo '$(srcdir)/'`TraderServer.cc
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-Server.o `test -f 'Server.cc' || echo '$(srcdir)/'`Server.cc
 
-zone-TraderServer.obj: TraderServer.cc
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-TraderServer.obj -MD -MP -MF $(DEPDIR)/zone-TraderServer.Tpo -c -o zone-TraderServer.obj `if test -f 'TraderServer.cc'; then $(CYGPATH_W) 'TraderServer.cc'; else $(CYGPATH_W) '$(srcdir)/TraderServer.cc'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-TraderServer.Tpo $(DEPDIR)/zone-TraderServer.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='TraderServer.cc' object='zone-TraderServer.obj' libtool=no @AMDEPBACKSLASH@
+zone-Server.obj: Server.cc
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-Server.obj -MD -MP -MF $(DEPDIR)/zone-Server.Tpo -c -o zone-Server.obj `if test -f 'Server.cc'; then $(CYGPATH_W) 'Server.cc'; else $(CYGPATH_W) '$(srcdir)/Server.cc'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/zone-Server.Tpo $(DEPDIR)/zone-Server.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='Server.cc' object='zone-Server.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-TraderServer.obj `if test -f 'TraderServer.cc'; then $(CYGPATH_W) 'TraderServer.cc'; else $(CYGPATH_W) '$(srcdir)/TraderServer.cc'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o zone-Server.obj `if test -f 'Server.cc'; then $(CYGPATH_W) 'Server.cc'; else $(CYGPATH_W) '$(srcdir)/Server.cc'; fi`
 
 zone-Main.o: Main.cc
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(zone_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT zone-Main.o -MD -MP -MF $(DEPDIR)/zone-Main.Tpo -c -o zone-Main.o `test -f 'Main.cc' || echo '$(srcdir)/'`Main.cc
